@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Kasa İşlem Listesi</h1>
+  <table border="1">
+      <tr>
+          <th>Tarih</th>
+          <th>Açıklama</th>
+          <th>Tutar</th>
+          <th>İşlem Türü</th>
+      </tr>
+      {% for islem in islemler %}
+      <tr>
+          <td>{{ islem.tarih }}</td>
+          <td>{{ islem.aciklama }}</td>
+          <td>{{ islem.tutar }}</td>
+          <td>{{ islem.get_islem_turu_display }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+          <td colspan="4">Kayıt bulunamadı.</td>
+      </tr>
+      {% endfor %}
+  </table>
+
+  <br>
+  <a href="{% url 'gun_sonu_devir' %}">Gün Sonu Devir Ekle</a>
+  <a href="{% url 'islem_ekle' %}">Yeni İşlem Ekle</a>
+  <a href="{% url 'kasa_durumu' %}">Kasa Durumu</a>
+
+  {% if messages %}
+      <ul>
+      {% for message in messages %}
+          <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+  {% endif %}
+{% endblock %}

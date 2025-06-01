@@ -1,0 +1,20 @@
+<!-- templates/kasaapp/islem_ekle.html -->
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yeni İşlem Ekle</title>
+</head>
+<body>
+    <h1>Yeni Kasa İşlemi Ekle</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Kaydet</button>
+    </form>
+
+    <a href="{% url 'transaction_list' %}">⬅ İşlem Listesi</a>
+</body>
+</html>

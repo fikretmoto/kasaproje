@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Kasa Durumu</h1>
+  <p><strong>Toplam Gelir:</strong> {{ gelir }} TL</p>
+  <p><strong>Toplam Gider:</strong> {{ gider }} TL</p>
+  <p><strong>Güncel Bakiye:</strong> 
+    <span style="color: {% if bakiye >= 0 %}green{% else %}red{% endif %};">
+      {{ bakiye }} TL
+    </span>
+  </p>
+  <a href="{% url 'transaction_list' %}">⬅ İşlem Listesi</a>
+{% endblock %}

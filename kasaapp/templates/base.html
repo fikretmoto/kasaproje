@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    {% load static %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kasa Programı - Gelir ve Gider Takibi">
+    <meta charset="UTF-8" />
+    <title>{% block title %}Kasa Programı{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav>
+        {% if user.is_authenticated %}
+            Hoşgeldin, {{ user.username }} | 
+            <a href="{% url 'logout' %}">Çıkış</a>
+        {% else %}
+            <a href="{% url 'login' %}">Giriş</a>
+        {% endif %}
+    </nav>
+    <hr>
+    
+    {% block content %}
+    <!-- Buraya her sayfanın içeriği gelecek -->
+    {% endblock %}
+</body>
+</html>

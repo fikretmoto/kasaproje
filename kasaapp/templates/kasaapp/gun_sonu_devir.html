@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Gün Sonu Devir İşlemi</h1>
+
+  <p>Tarih: {{ tarih }}</p>
+
+  <form method="post">
+      {% csrf_token %}
+      <button type="submit">GÜN SONU DEVİR EKLE</button>
+  </form>
+
+  {% if messages %}
+      <ul>
+      {% for message in messages %}
+          <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+  {% endif %}
+
+  <a href="{% url 'transaction_list' %}">İşlem Listesi</a>
+{% endblock %}
