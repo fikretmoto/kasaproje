@@ -77,11 +77,19 @@ WSGI_APPLICATION = 'kasaproje.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
 DATABASES = {
-    
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600),
-    }
+
+        'default': dj_database_url.config(
+        default='postgresql://kasaproje_user:9LnViGNsHY4QM0adQbPuGJQPVG1kHQlq@dpg-d0uak13e5dus738vv6f0-a/kasaproje',
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
+    
+       
+    
+
 
 
 # Password validation
